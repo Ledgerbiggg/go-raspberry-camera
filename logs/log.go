@@ -1,7 +1,6 @@
 package logs
 
 import (
-	"fmt"
 	"log"
 )
 
@@ -38,23 +37,23 @@ func InitLogStyle() {
 // Debug 打印调试信息
 func Debug(a ...any) {
 	setLogPrefix(DebugLevel)
-	log.Println(fmt.Sprintf("%v", a))
+	log.Println(a...)
 }
 
 // Info 打印一般信息
 func Info(a ...any) {
 	setLogPrefix(InfoLevel)
-	log.Println(fmt.Sprintf("%v", a))
+	log.Println(a...)
 }
 
 // Warn 打印警告信息
 func Warn(a ...any) {
 	setLogPrefix(WarnLevel)
-	log.Println(fmt.Sprintf("%v", a))
+	log.Println(a...)
 }
 
 // Error 打印错误信息
 func Error(a ...any) {
 	setLogPrefix(ErrorLevel)
-	log.Println(fmt.Sprintf("%v", a))
+	log.Println(a...)
 }
