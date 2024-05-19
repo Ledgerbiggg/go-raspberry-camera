@@ -32,6 +32,7 @@ func (vc *VideoConverter) ConvertToMP4(inputFile, outputDir string) {
 	if err := cmd.Run(); err != nil {
 		logs.Error("ffmpeg执行出错:", err)
 		return
+
 	}
 
 	logs.Info("转换成功: %s 到 %s\n", inputFile, outputFile)
