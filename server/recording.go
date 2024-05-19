@@ -29,7 +29,7 @@ func (r *Recording) RecordVideo() {
 		v.RecordVideo(fmt.Sprintf("video%d.h264", i))
 		time.Sleep(1 * time.Second)
 		go func(i int) {
-			vc.ConvertToMP4(fmt.Sprintf("video%d.mp4", i))
+			vc.ConvertToMP4(fmt.Sprintf("video%d.h264", i))
 		}(i)
 		i++
 	}
