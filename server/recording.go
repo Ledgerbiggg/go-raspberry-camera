@@ -5,13 +5,16 @@ import (
 	"camera/model/camera"
 	"camera/model/helper"
 	"fmt"
-	"time"
 )
 
-type Recording struct{}
+type Recording struct {
+	c chan int
+}
 
 func NewRecording() *Recording {
-	return &Recording{}
+	return &Recording{
+		c: make(chan int, 1),
+	}
 }
 
 func (r *Recording) RecordVideo() {
@@ -24,13 +27,15 @@ func (r *Recording) RecordVideo() {
 		config.GConfigs.Camera.Video.Bitrate)
 	vc := helper.NewVideoConverter()
 
+	go func() {
+		index := <-r.c
+		vc.ConvertToMP4(fmt.Sprintf("video%d.h264", index))
+	}()
+
 	for {
 		fmt.Printf("开始录制第%d视频\n", i)
 		v.RecordVideo(fmt.Sprintf("video%d.h264", i))
-		time.Sleep(1 * time.Second)
-		go func(i int) {
-			vc.ConvertToMP4(fmt.Sprintf("video%d.h264", i))
-		}(i)
+		r.c <- i
 		i++
 	}
 }

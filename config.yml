@@ -5,10 +5,10 @@ camera:
   shot:
     width: 1920
     height: 1080
-    timeout: 5000
+    timeout: 10000
     bitrate: 10000000
   video:
     width: 1920
     height: 1080
-    timeout: 5000
+    timeout: 10000
     bitrate: 10000000
