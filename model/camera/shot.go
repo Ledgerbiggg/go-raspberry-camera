@@ -40,6 +40,6 @@ func (s *Shot) Photograph() {
 
 	err := cmd.Run()
 	if err != nil {
-		logs.Error("error to exec command!!: %s\n", err)
+		logs.Error("error to exec command!!: \n", err)
 	}
 }

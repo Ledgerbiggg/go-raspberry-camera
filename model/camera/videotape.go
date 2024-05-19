@@ -45,6 +45,6 @@ func (v *Videotape) RecordVideo(outputFile string) {
 	cmd := exec.Command(command[0], command[1:]...)
 	err := cmd.Run()
 	if err != nil {
-		fmt.Printf("命令执行失败: %s\n", err)
+		fmt.Printf("命令执行失败: \n", err)
 	}
 }

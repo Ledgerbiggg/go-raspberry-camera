@@ -39,12 +39,12 @@ func (vc *VideoConverter) ConvertToMP4(inputFile string) {
 
 	}
 
-	logs.Info("转换成功: %s 到 %s\n", inputFile, outputFile)
+	logs.Info("转换成功:", inputFile, outputFile)
 
 	// 删除原视频文件
 	if err := os.Remove(inputFile); err != nil {
 		logs.Error("删除文件失败:", err)
 	} else {
-		logs.Info("删除文件成功: %s\n", inputFile)
+		logs.Info("删除文件成功:", inputFile)
 	}
 }

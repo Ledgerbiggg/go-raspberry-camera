@@ -12,8 +12,8 @@ func init() {
 	logs.InitLogStyle()
 	err := config.LoadConfig()
 	if err != nil {
-		logs.Error("fatal error config file: %s", err)
-		panic(fmt.Errorf("fatal error config file: %s", err))
+		logs.Error("fatal error config file: ", err)
+		panic(fmt.Errorf("fatal error config file: ", err))
 		return
 	}
 	// 创建目标文件夹
