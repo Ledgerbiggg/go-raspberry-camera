@@ -32,7 +32,7 @@ func (vc *VideoConverter) ConvertToMP4(inputFile string) {
 	outputFile := filepath.Join(path, util.GetTodaySecondString())
 	logs.Debug("执行的脚本文件是:", "ffmpeg", "-f", "h264", "-i", inputFile, "-vcodec", "copy", outputFile)
 	// 构建ffmpeg命令来转换视频格式
-	cmd := exec.Command("ffmpeg", "-f", "h264", "-i", inputFile, "-vcodec", "copy", outputFile)
+	cmd := exec.Command("ffmpeg", "-f", "h264", "-i", inputFile, "-vcodec", "copy", outputFile+".mp4")
 	if err := cmd.Run(); err != nil {
 		logs.Error("ffmpeg执行出错:", err)
 		return
