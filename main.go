@@ -5,6 +5,7 @@ import (
 	"camera/logs"
 	"camera/server"
 	"fmt"
+	"os"
 )
 
 func init() {
@@ -15,6 +16,12 @@ func init() {
 		panic(fmt.Errorf("fatal error config file: %s", err))
 		return
 	}
+	// 创建目标文件夹
+	if err = os.MkdirAll("video", 0755); err != nil {
+		logs.Error("创建目录失败:", err)
+		return
+	}
+
 }
 
 func main() {

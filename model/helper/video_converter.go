@@ -2,10 +2,10 @@ package helper
 
 import (
 	"camera/logs"
+	"camera/util"
 	"os"
 	"os/exec"
 	"path/filepath"
-	"time"
 )
 
 type VideoConverter struct{}
@@ -14,18 +14,22 @@ func NewVideoConverter() *VideoConverter {
 	return &VideoConverter{}
 }
 
-func (vc *VideoConverter) ConvertToMP4(inputFile, outputDir string) {
-	todayDateString := getTodayDateString()
-	outputPath := filepath.Join(outputDir, todayDateString)
+func (vc *VideoConverter) ConvertToMP4(inputFile string) {
 
+	path := filepath.Join(
+		"video",
+		util.GetTodayDateString(),
+		util.GetTodayHourString(),
+		util.GetTodayMinuteString(),
+	)
 	// 创建目标文件夹
-	if err := os.MkdirAll(outputPath, 0755); err != nil {
+	if err := os.MkdirAll(path, 0755); err != nil {
 		logs.Error("创建目录失败:", err)
 		return
 	}
 
 	// 构建输出文件路径
-	outputFile := filepath.Join(outputPath, filepath.Base(inputFile))
+	outputFile := filepath.Join(path, util.GetTodaySecondString())
 
 	// 构建ffmpeg命令来转换视频格式
 	cmd := exec.Command("ffmpeg", "-f", "h264", "-i", inputFile, "-vcodec", "copy", outputFile)
@@ -43,8 +47,4 @@ func (vc *VideoConverter) ConvertToMP4(inputFile, outputDir string) {
 	} else {
 		logs.Info("删除文件成功: %s\n", inputFile)
 	}
-}
-
-func getTodayDateString() string {
-	return time.Now().Format("2006-01-02")
 }
