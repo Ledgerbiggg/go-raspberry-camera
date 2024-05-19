@@ -28,8 +28,10 @@ func (r *Recording) RecordVideo() {
 	vc := helper.NewVideoConverter()
 
 	go func() {
-		index := <-r.c
-		vc.ConvertToMP4(fmt.Sprintf("video%d.h264", index))
+		for {
+			index := <-r.c
+			vc.ConvertToMP4(fmt.Sprintf("video%d.h264", index))
+		}
 	}()
 
 	for {
