@@ -36,7 +36,7 @@ sudo apt install libcamera-apps
 ```shell
 libcamera-hello
 ```
-
+### 使用手册
 * 运行以下脚本命令:
 
 ```shell
