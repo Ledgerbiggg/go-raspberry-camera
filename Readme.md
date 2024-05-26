@@ -22,5 +22,8 @@ curl -o load.sh https://raw.githubusercontent.com/Ledgerbiggg/go-raspberry-camer
 chmod +x load.sh
 ./load.sh
 ```
+* 就会在当前目录下面生成这样的文件(视频的一些配置请参考config.yml文件):
+* ![](https://img2.imgtp.com/2024/05/26/1lWJIUZu.png)
+
 
 
