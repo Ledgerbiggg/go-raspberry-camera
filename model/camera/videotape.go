@@ -1,6 +1,7 @@
 package camera
 
 import (
+	"camera/logs"
 	"fmt"
 	"os/exec"
 )
@@ -45,6 +46,6 @@ func (v *Videotape) RecordVideo(outputFile string) {
 	cmd := exec.Command(command[0], command[1:]...)
 	err := cmd.Run()
 	if err != nil {
-		fmt.Printf("命令执行失败: \n", err)
+		logs.Error("命令执行失败: %v \n", err)
 	}
 }
