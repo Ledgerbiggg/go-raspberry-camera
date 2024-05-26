@@ -10,3 +10,4 @@ go build -o raspberry-camera
 chmod +x raspberry-camera
 
 ./raspberry-camera
+
